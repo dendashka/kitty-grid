@@ -10,6 +10,6 @@ It include 2 files:
 
 Kitty grid system based on scss mixins and default css classes which set containers, rows, and columns to layout and align content.
 
-Use <div class="container">...</div> to wrap you content, it has max-width 1190px by default and padding 15px
-Use <div class="container-fluid">...</div> to add full width container
+Use `<div class="container">...</div>` to wrap you content, it has max-width 1190px by default and padding 15px
+Use `<div class="container-fluid">...</div>` to add full width container
 
