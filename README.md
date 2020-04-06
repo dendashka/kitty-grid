@@ -4,8 +4,8 @@ fluid and modern scss grid based on flexbox, bem ready, hot like your girl :)
 ![kitty grid](https://chpic.su/_data/stickers/k/kocheng/kocheng_036.webp)
 
 It include 2 files:
-1. whith desktop-first set - i use it on my work :(
-2. whith mobile-first set - if you like bootstrap or this approach at whole import this file to your project
+1. with desktop-first set - i use it on my work :(
+2. with mobile-first set - if you like bootstrap or this approach at whole import this file to your project
 
 ## How it works 
 > i will describe desktop-first set, if you need mobile-first(bootstrap) i think you know what to do :)
