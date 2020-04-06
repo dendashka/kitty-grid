@@ -5,25 +5,25 @@ $break_lg : 992px;
 $break_xlg : 1200px;
 
 // media queries mixins
-@mixin xlg {
+@mixin sm {
     @media (min-width: $break_sm) {
         @content;
     }
 }
 
-@mixin lg {
+@mixin md {
     @media (min-width: $break_md) {
         @content;
     }
 }
 
-@mixin md {
+@mixin lg {
     @media (min-width: $break_lg) {
         @content;
     }
 }
 
-@mixin sm {
+@mixin xlg {
     @media (min-width: $break_xlg) {
         @content;
     }
@@ -39,9 +39,11 @@ $mob-padding: 15px;
     @include md {
         --content-width: 690px;
     }
+
     @include xl {
         --content-width: 930px;
     }
+
     @include xlg {
         --content-width: 1110px;
     }
@@ -78,11 +80,11 @@ $mob-padding: 15px;
     margin-right: $gutter;
 
     @if(type-of($gutter)==string) and ($gutter !=var(--gutter)) {
-        @error "Unknown property `#{$gutter}`. Argument is gutter value must be default, 0 or more than 1 in px,rem,em etc.";
+        @error "Unknown property `#{$gutter}`. Argument is gutter value and must be default, 0 or more than 1 in px,rem,em etc.";
     }
 
     @else if(type-of($gutter)==number) and ($gutter <=1) and not ($gutter=0) {
-        @error "Unknown property `#{$gutter}`. Argument is gutter value must be default, 0 or more than 1 in px,rem,em etc.";
+        @error "Unknown property `#{$gutter}`. Argument is gutter value and must be default, 0 or more than 1 in px,rem,em etc.";
     }
 }
 
@@ -107,7 +109,7 @@ $mob-padding: 15px;
     }
 
     @else {
-        @error "Argument must be auto or adaptive or part of column count(e. g. 2/12).";
+        @error "Argument value must be auto or adaptive or part of column count(e. g. 2/12).";
     }
 }
 
@@ -124,7 +126,7 @@ $mob-padding: 15px;
 
 // main container
 .container {
-    max-width: calc(#{$content-width} + #{$mob-padding} * 2);
+    max-width: calc(var(--content-width) + #{$mob-padding} * 2);
     padding: 0 $mob-padding;
     margin: 0 auto;
 }
