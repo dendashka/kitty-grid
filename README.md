@@ -5,8 +5,8 @@ It include 2 files:
 1. whith desktop-first set - i use it on my work :(
 2. whith mobile-first set - if you like bootstrap or this approach at whole import this file to your project
 
-h2 How it works - i will describe desktop-first set, if you need mobile-first i think you know what to do :)
------------------------------------
+## How it works 
+> i will describe desktop-first set, if you need mobile-first i think you know what to do :)
 
 Kitty grid system based on scss mixins and default css classes which set containers, rows, and columns to layout and align content.
 
