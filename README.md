@@ -81,9 +81,9 @@ Additionally you may change default gutters wich used in mixin, just set them in
       .custom-row {
             @include row(-20px);
       
-      @include md {
-            @include row(-5px);
-      }
+            @include md {
+                  @include row(-5px);
+            }
       
             $__item {
                   @include col(20px);
