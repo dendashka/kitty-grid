@@ -18,11 +18,11 @@ Look to this page with examples, its easy to understanding, really, just believe
 Import one of set to your project. Nice, now you have a full fluid grid.
 
 Make layout:
-
-`<div class="row">
-   <div class="row__item">1</div>
-   <div class="row__item">1</div>
-   <div class="row__item">1</div>
-   <div class="row__item">1</div>
-</div>`
-
+`
+      <div class="row">
+         <div class="row__item">1</div>
+         <div class="row__item">1</div>
+         <div class="row__item">1</div>
+         <div class="row__item">1</div>
+      </div>
+`
