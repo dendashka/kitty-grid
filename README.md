@@ -91,7 +91,8 @@ Additionally you may change default gutters wich used in mixin, just set them in
 
                   @include md {
                         @include col(5px);
-                        @include size(1/5, 5px);
+                        @include size(1/3, 5px);
+                        @include offset(1/3, 5px);
                   }
 
             }
