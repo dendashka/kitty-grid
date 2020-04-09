@@ -4,8 +4,9 @@ fluid and modern scss grid based on flexbox and css variables, bem ready, hot li
 ![kitty grid](https://chpic.su/_data/stickers/k/kocheng/kocheng_036.webp)
 
 It includes 2 files:
-1. with desktop-first set - i use it on my work :(
-2. with mobile-first set - if you like bootstrap or this approach at whole import this file to your project
+
+      1. with desktop-first set - i use it on my work :(
+      2. with mobile-first set - if you like bootstrap or this approach at whole import this file to your project
 
 ## Short info, browser support
 This grid based on css variables, so to know browser support see next link https://caniuse.com/#search=css%20var - 94.68% - nice result, but forget ie11<= or use polyfill
