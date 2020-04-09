@@ -98,5 +98,24 @@ Additionally you may change default gutters wich used in mixin, just set them in
             }
       }
       
- As you may see, this grid is max fluid and responsive, so use it on your projects and work hard!
+or:
+
+      .custom-row {
+            @include row(0);
+      
+            $__item {
+                  @include col(0);
+                  @include size(1/4, 0);
+                  //width: calc(...); you can use custom width instead mixin size
+
+                  @include md {
+                        @include size(1/3, 0);
+                  }
+
+            }
+      }
+      
+> to be continued...
+      
+ > As you may see, this grid is max fluid and responsive, so use it on your projects and work hard!
 
