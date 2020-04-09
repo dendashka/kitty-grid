@@ -8,7 +8,7 @@ It includes 2 files:
 2. with mobile-first set - if you like bootstrap or this approach at whole import this file to your project
 
 ## Short info, browser support
-This grid based on css variables, so to know browser support see next link https://caniuse.com/#search=css%20var - 94.68% - nice result, but forget ie11<=, or use polyfill
+This grid based on css variables, so to know browser support see next link https://caniuse.com/#search=css%20var - 94.68% - nice result, but forget ie11<= or use polyfill
 
 Kitty grid system based on scss mixins and default css classes which set containers, rows, offsets and columns to layout and align content.
 
@@ -25,7 +25,7 @@ Include `col` mixin to set item as column and next include `size` mixin to set s
 
 Use `offset` mixin to move column to right, like `size` mixin it needs argument - part of needed columns in row
 
-To change column size or custom css values on different screen sizes include one of mixin - sm, md, lg, xlg.
+To change column size or custom css values on different screen sizes include one of mixin - `sm`, `md`, `lg`, `xlg`.
 
 > Example of html layout:
 
@@ -98,5 +98,5 @@ Additionally you may change default gutters wich used in mixin, just set them in
             }
       }
       
- As you may see, this grid is max fluid and responsive, so use it and good luck in work!
+ As you may see, this grid is max fluid and responsive, so use it on your projects and work hard!
 
