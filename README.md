@@ -13,7 +13,7 @@ This grid based on css variables, so to know browser support see next link https
 
 Kitty grid system based on scss mixins and default css classes which set containers, rows, offsets and columns to layout and align content.
 
-      > Look at this page with examples, its easy breezy, really, just believe me ;)
+      >>> Look at this page with examples, its easy breezy, really, just believe me ;)
 
 ## Get started and basic usage
 At first import desktop-first or mobile-first set to your project. Nice, now you have the best full fluid grid))
