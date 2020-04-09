@@ -35,6 +35,8 @@ To change column size or custom css values on different screen sizes include one
                   <div class="row__item">1</div>
                   <div class="row__item">1</div>
                   <div class="row__item">1</div>
+                  <div class="row__item">1</div>
+                  <div class="row__item">1</div>
                   <div class="row__item row__item_mobile-small">1</div>
             </div>
       </div>
@@ -44,10 +46,12 @@ To change column size or custom css values on different screen sizes include one
       .row__item {
             @include col();
             @include size(1/5);
+            flex-grow: 1; // use to stretch last items in row
             color: black;
             
             @include md {
                   @include size(adaptive);
+                  flex-grow: 0;
                   color: red;
             }
             
