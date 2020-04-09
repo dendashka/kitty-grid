@@ -84,7 +84,7 @@ $mob-padding: 15px;
         @error "Unknown property `#{$gutter}`. Argument is gutter value and must be default, 0 or more than 1 in px,rem,em etc.";
     }
 
-    @else if(type-of($gutter)==number) and ($gutter <=1) {
+    @else if(type-of($gutter)==number) and ($gutter <=1) and not ($gutter=0) {
         @error "Unknown property `#{$gutter}`. Argument is gutter value and must be default, 0 or more than 1 in px,rem,em etc.";
     }
 }
