@@ -55,7 +55,6 @@ $mob-padding: 15px;
     display: flex;
     flex-wrap: wrap;
     clear: both;
-    width: calc(100% + var(--gutter) * 2);
 
     @if $gutter {
         margin-left: $gutter;
