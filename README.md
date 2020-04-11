@@ -1,7 +1,7 @@
 # kitty-grid 😼 - lightweight and fluid scss flexbox grid 
 fluid and modern scss grid based on flexbox and css variables, bem ready, hot like your girl :)
 
-[>>>examples](https://dendashka.github.io/kitty-grid-examples/)
+> [examples](https://dendashka.github.io/kitty-grid-examples/)
 
 ![kitty grid](https://chpic.su/_data/stickers/k/kocheng/kocheng_036.webp)
 
