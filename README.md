@@ -1,5 +1,5 @@
 # kitty-grid 😼 - lightweight and fluid scss flexbox grid 
-**fluid and modern scss grid based on flexbox and css variables, bem ready, hot like your girl :)**
+**Fluid and modern scss grid based on flexbox and css variables, bem ready, hot like your girl :)**
 
 **>>> Look at this [page with examples](https://dendashka.github.io/kitty-grid-examples/) , its easy breezy, really, just believe me ;)**
 
