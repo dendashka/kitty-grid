@@ -1,5 +1,7 @@
-# kitty-grid 😼 - lightweight scss flexbox grid 
-fluid and modern scss grid based on flexbox and css variables, bem ready, hot like your girl :)
+# kitty-grid 😼 - lightweight and fluid scss flexbox grid 
+**Fluid and modern scss grid based on flexbox and css variables, bem ready, hot like your girl :)**
+
+**>>> Look at this [page with examples](https://dendashka.github.io/kitty-grid-examples/) , its easy breezy, really, just believe me ;)**
 
 ![kitty grid](https://chpic.su/_data/stickers/k/kocheng/kocheng_036.webp)
 
@@ -12,8 +14,6 @@ It includes 2 files:
 This grid based on css variables, so to know browser support see next link https://caniuse.com/#search=css%20var - 94.68% - nice result, but forget ie11<= or use polyfill
 
 Kitty grid system based on scss mixins and default css classes which set containers, rows, offsets and columns to layout and align content.
-
-      >>> Look at this page with examples, its easy breezy, really, just believe me ;)
 
 ## Get started and basic usage
 At first import desktop-first or mobile-first set to your project. Nice, now you have the best full fluid grid))
@@ -120,7 +120,7 @@ or:
             }
       }
       
-> to be continued...
+**[>>> more examples](https://dendashka.github.io/kitty-grid-examples/)**
       
- > As you may see, this grid is max fluid and responsive, so use it on your projects and work hard!
+As you may see, kitty-grid is max fluid and responsive, so use it on your projects and work hard!
 
