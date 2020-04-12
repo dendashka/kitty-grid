@@ -38,7 +38,7 @@ To change column size or custom css values on different screen sizes include one
                   <div class="row__item">1</div>
                   <div class="row__item">1</div>
                   <div class="row__item">1</div>
-                  <div class="row__item row__item_mobile-small">1</div>
+                  <div class="row__item row__item_mobile-offset">1</div>
             </div>
       </div>
       
