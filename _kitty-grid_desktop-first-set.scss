@@ -79,6 +79,7 @@ $mob-padding: 15px;
 
 @mixin col($gutter: var(--gutter)) {
     box-sizing: border-box;
+    min-width: 0; // firefox fix Bug 1179454
     margin-left: $gutter;
     margin-right: $gutter;
 
