@@ -3,7 +3,7 @@
 
 **>>> Look at this [page with examples](https://dendashka.github.io/kitty-grid-examples/) , its easy breezy, really, just believe me ;)**
 
-![kitty grid](https://chpic.su/_data/stickers/k/kocheng/kocheng_036.webp)
+![kitty grid](https://shonet.imgix.net/images/4349-Alesio_Gerald-post-1562319534490?q=75&auto=compress,format&w=825)
 
 It includes 2 files:
 
