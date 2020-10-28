@@ -1,30 +1,37 @@
-// breakpoints
-$break_sm : 576px;
-$break_md : 768px;
-$break_lg : 992px;
-$break_xlg : 1200px;
+// desktop first breakpoints
+$break_xlg : 1400px;
+$break_lg : 1200px;
+$break_md : 920px;
+$break_sm : 640px;
+$break_xs : 360px;
 
 // media queries mixins
-@mixin sm {
-    @media (min-width: $break_sm) {
-        @content;
-    }
-}
-
-@mixin md {
-    @media (min-width: $break_md) {
+@mixin xlg {
+    @media screen and (max-width: $break_xlg) {
         @content;
     }
 }
 
 @mixin lg {
-    @media (min-width: $break_lg) {
+    @media screen and (max-width: $break_lg) {
         @content;
     }
 }
 
-@mixin xlg {
-    @media (min-width: $break_xlg) {
+@mixin md {
+    @media screen and (max-width: $break_md) {
+        @content;
+    }
+}
+
+@mixin sm {
+    @media screen and (max-width: $break_sm) {
+        @content;
+    }
+}
+
+@mixin xs {
+    @media screen and (max-width: $break_xs) {
         @content;
     }
 }
@@ -33,21 +40,14 @@ $break_xlg : 1200px;
 $mob-padding: 15px;
 
 :root {
-    --content-width: 510px;
+    --content-width: 1170px;
     --gutter: 15px;
+}
 
-    @include md {
-        --content-width: 690px;
+@include md {
+    :root {
+        --gutter: 10px;
     }
-
-    @include lg {
-        --content-width: 930px;
-    }
-
-    @include xlg {
-        --content-width: 1110px;
-    }
-
 }
 
 // default layout mixins

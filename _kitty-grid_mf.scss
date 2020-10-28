@@ -1,0 +1,138 @@
+// breakpoints
+$break_sm: 576px;
+$break_md: 768px;
+$break_lg: 992px;
+$break_xlg: 1200px;
+$break_xxlg: 1400px;
+
+// media queries mixins
+@mixin sm {
+  @media (min-width: $break_sm) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: $break_md) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: $break_lg) {
+    @content;
+  }
+}
+
+@mixin xlg {
+  @media (min-width: $break_xlg) {
+    @content;
+  }
+}
+
+@mixin xxlg {
+  @media (min-width: $break_xxlg) {
+    @content;
+  }
+}
+
+// container, variables and fluid mobile gutters
+
+:root {
+  --content-width: 1170px;
+  --mob-padding: 15px;
+  --gutter: 15px;
+
+  @include lg {
+    // --gutter: 25px;
+  }
+
+  @include xlg {
+    // --content-width: 1330px;
+  }
+}
+
+// default layout mixins
+@mixin row($gutter: false) {
+  display: flex;
+  flex-wrap: wrap;
+  clear: both;
+
+  @if (type-of($gutter) ==number) and ($gutter > 0) {
+    @error "Unknown property `#{$gutter}`. The argument is a negative gutter value and must be empty, 0 or <0 in px,rem,em etc.";
+  } @else if $gutter {
+    margin-left: $gutter;
+    margin-right: $gutter;
+  } @else {
+    margin-left: calc(var(--gutter) * -1);
+    margin-right: calc(var(--gutter) * -1);
+  }
+}
+
+@mixin no-gutter {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@mixin col($gutter: var(--gutter)) {
+  box-sizing: border-box;
+  min-width: 0; // firefox fix Bug 1179454
+  margin-left: $gutter;
+  margin-right: $gutter;
+
+  @if (type-of($gutter) ==string) and ($gutter !=var(--gutter)) {
+    @error "Unknown property `#{$gutter}`. The argument is positive gutter value and must be empty, 0 or >=0 in px,rem,em etc.";
+  }
+}
+
+@mixin size($col, $gutter: var(--gutter)) {
+  @if $col==auto {
+    width: auto;
+    flex-basis: auto;
+    flex-grow: 0;
+  } @else if $col==adaptive {
+    width: 100%;
+    flex-basis: 0;
+    flex-grow: 1;
+  } @else if(type-of($col) ==number) and ($gutter != 0) {
+    width: calc(100%  #{$col} - #{$gutter}  2 - 0.1px); // 0.1px - is a fix for ie11 in some situations
+    flex-basis: auto;
+    flex-grow: 0;
+  } @else if(type-of($col) ==number) and ($gutter = 0) {
+    width: calc(100% * #{$col});
+    flex-basis: auto;
+    flex-grow: 0;
+  } @else {
+    @error "Argument value must be 'auto', 'adaptive' or column ratio (e.g. '2/12').";
+  }
+}
+
+@mixin offset($col: false, $gutter: var(--gutter)) {
+  @if $col {
+    margin-left: calc(100% * #{$col} + #{$gutter});
+  } @else {
+    margin-left: $gutter;
+  }
+}
+
+// main container
+.n-container {
+  width: 100%;
+  max-width: calc(var(--content-width) + var(--mob-padding) * 2);
+  padding: 0 var(--mob-padding);
+  margin: 0 auto;
+}
+
+.container-fluid {
+  width: 100%;
+  max-width: 100%;
+}
+
+// row
+.row {
+  @include row();
+
+  &_no-gutter {
+    @include no-gutter();
+  }
+}
