@@ -36,7 +36,7 @@ $break_xxlg: 1400px;
   }
 }
 
-// globall variables to callback in ie11 and old browsers
+// globall variables to fallback in ie11 and old browsers
 $gl-content-width: 1170px;
 $gl-mob-padding: 15px;
 $gl-gutter: 15px;
@@ -68,9 +68,9 @@ $gl-gutter: 15px;
     margin-left: $gutter;
     margin-right: $gutter;
   } @else {
-    margin-left: calc(#{$gl-gutter} * -1); // ie11 callback
+    margin-left: calc(#{$gl-gutter} * -1); // ie11 fallback
     margin-left: calc(var(--gutter) * -1);
-    margin-right: calc(#{$gl-gutter} * -1); // ie11 callback
+    margin-right: calc(#{$gl-gutter} * -1); // ie11 fallback
     margin-right: calc(var(--gutter) * -1);
   }
 }
@@ -83,9 +83,9 @@ $gl-gutter: 15px;
 @mixin col($gutter: var(--gutter)) {
   box-sizing: border-box;
   min-width: 0; // firefox fix Bug 1179454
-  margin-left: $gl-gutter; // ie11 callback
+  margin-left: $gl-gutter; // ie11 fallback
   margin-left: $gutter;
-  margin-right: $gl-gutter; // ie11 callback
+  margin-right: $gl-gutter; // ie11 fallback
   margin-right: $gutter;
 
   @if (type-of($gutter) ==string) and ($gutter !=var(--gutter)) {
@@ -103,7 +103,7 @@ $gl-gutter: 15px;
     flex-basis: 0;
     flex-grow: 1;
   } @else if(type-of($col) ==number) and ($gutter != 0) {
-    width: calc(100% * #{$col} - #{$gl-gutter} * 2 - 0.1px); // ie11 callback
+    width: calc(100% * #{$col} - #{$gl-gutter} * 2 - 0.1px); // ie11 fallback
     width: calc(100% * #{$col} - #{$gutter} * 2 - 0.1px); // 0.1px - is a fix for ie11 in some situations
     flex-basis: auto;
     flex-grow: 0;
@@ -118,7 +118,7 @@ $gl-gutter: 15px;
 
 @mixin offset($col: false, $gutter: var(--gutter)) {
   @if $col {
-    margin-left: calc(100% * #{$col} + #{$gl-gutter}); // ie11 callback
+    margin-left: calc(100% * #{$col} + #{$gl-gutter}); // ie11 fallback
     margin-left: calc(100% * #{$col} + #{$gutter});
   } @else {
     margin-left: $gutter;
@@ -129,7 +129,7 @@ $gl-gutter: 15px;
 .container {
   box-sizing: border-box;
   width: 100%;
-  max-width: calc(#{$gl-content-width} + #{$gl-mob-padding} * 2); // ie11 callback
+  max-width: calc(#{$gl-content-width} + #{$gl-mob-padding} * 2); // ie11 fallback
   max-width: calc(var(--content-width) + var(--mob-padding) * 2);
   padding: 0 var(--mob-padding);
   margin: 0 auto;
