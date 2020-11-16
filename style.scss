@@ -1,0 +1,14 @@
+@import 'kitty-grid_mf';
+
+.element {
+    @include col();
+    @include size(1/4);
+    background: aqua;
+    margin-bottom: 6px;
+    padding: 25px;
+    font-size: 20px;
+
+    @include md{
+        @include size(1/3);
+    }
+}

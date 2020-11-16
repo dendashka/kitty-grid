@@ -1,0 +1,79 @@
+:root {
+  --content-width: 1170px;
+  --mob-padding: 15px;
+  --gutter: 10px;
+}
+
+@media (min-width: 992px) {
+  :root {
+    --gutter: 15px;
+  }
+}
+
+.container {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  max-width: calc(1170px + 15px * 2);
+  max-width: calc(var(--content-width) + var(--mob-padding) * 2);
+  padding: 0 var(--mob-padding);
+  margin: 0 auto;
+}
+
+.container-fluid {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  clear: both;
+  margin-left: calc(15px * -1);
+  margin-left: calc(var(--gutter) * -1);
+  margin-right: calc(15px * -1);
+  margin-right: calc(var(--gutter) * -1);
+}
+
+.row_no-gutter {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.element {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  min-width: 0;
+  margin-left: 15px;
+  margin-left: var(--gutter);
+  margin-right: 15px;
+  margin-right: var(--gutter);
+  width: calc(100% * 0.25 - 15px * 2 - 0.1px);
+  width: calc(100% * 0.25 - var(--gutter) * 2 - 0.1px);
+  -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  background: aqua;
+  margin-bottom: 6px;
+  padding: 25px;
+  font-size: 20px;
+}
+
+@media (min-width: 768px) {
+  .element {
+    width: calc(100% * 0.33333 - 15px * 2 - 0.1px);
+    width: calc(100% * 0.33333 - var(--gutter) * 2 - 0.1px);
+    -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+    -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
+  }
+}
