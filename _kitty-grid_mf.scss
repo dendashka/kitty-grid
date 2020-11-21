@@ -1,38 +1,21 @@
 // breakpoints
-$break_sm: 576px;
-$break_md: 768px;
-$break_lg: 992px;
-$break_xlg: 1200px;
-$break_xxlg: 1400px;
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xlg: 1200px,
+  xxlg: 1400px,
+);
 
 // media queries mixins
-@mixin sm {
-  @media (min-width: $break_sm) {
-    @content;
-  }
-}
-
-@mixin md {
-  @media (min-width: $break_md) {
-    @content;
-  }
-}
-
-@mixin lg {
-  @media (min-width: $break_lg) {
-    @content;
-  }
-}
-
-@mixin xlg {
-  @media (min-width: $break_xlg) {
-    @content;
-  }
-}
-
-@mixin xxlg {
-  @media (min-width: $break_xxlg) {
-    @content;
+@mixin breakpoint($screen-size) {
+  @if map-has-key($breakpoints, $screen-size) {
+    @media (min-width: map-get($breakpoints, $screen-size)) {
+        @content;
+    }
+  } @else {
+      // Debugging
+      @error "#{$screen-size} has not been declared as a breakpoint."
   }
 }
 
@@ -47,11 +30,10 @@ $gl-gutter: 15px;
   --mob-padding: 15px;
   --gutter: 10px;
 
-  @include lg {
+  @include breakpoint(lg){
     --gutter: 15px;
   }
-
-  @include xlg {
+  @include breakpoint(xlg){
     // --content-width: 1330px;
   }
 }
@@ -117,11 +99,11 @@ $gl-gutter: 15px;
 }
 
 @mixin offset($col: false, $gutter: var(--gutter)) {
-  @if $col {
+  @if (type-of($col) ==number) and ($col >= 0) {
     margin-left: calc(100% * #{$col} + #{$gl-gutter}); // ie11 fallback
     margin-left: calc(100% * #{$col} + #{$gutter});
   } @else {
-    margin-left: $gutter;
+    @error "Argument value must be a ratio (e.g. '2/12') or 0";
   }
 }
 
