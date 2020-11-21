@@ -1,5 +1,4 @@
-// breakpoints
-$breakpoints: (
+$breakpoints: ( // breakpoints  
   sm: 576px,
   md: 768px,
   lg: 992px,
@@ -11,11 +10,13 @@ $breakpoints: (
 @mixin breakpoint($screen-size) {
   @if map-has-key($breakpoints, $screen-size) {
     @media (min-width: map-get($breakpoints, $screen-size)) {
-        @content;
+      @content;
     }
-  } @else {
-      // Debugging
-      @error "#{$screen-size} has not been declared as a breakpoint."
+  }
+
+  @else {
+    // Debugging
+    @error "#{$screen-size} has not been declared as a breakpoint."
   }
 }
 
@@ -28,12 +29,13 @@ $gl-gutter: 15px;
 :root {
   --content-width: 1170px;
   --mob-padding: 15px;
-  --gutter: 10px;
+  --gutter: 15px;
 
-  @include breakpoint(lg){
-    --gutter: 15px;
+  @include breakpoint(lg) {
+    // --content-width: 1330px;
   }
-  @include breakpoint(xlg){
+
+  @include breakpoint(xxlg) {
     // --content-width: 1330px;
   }
 }
@@ -44,12 +46,16 @@ $gl-gutter: 15px;
   flex-wrap: wrap;
   clear: both;
 
-  @if (type-of($gutter) ==number) and ($gutter > 0) {
+  @if (type-of($gutter)==number) and ($gutter > 0) {
     @error "Unknown property `#{$gutter}`. The argument is a negative gutter value and must be empty, 0 or <0 in px,rem,em etc.";
-  } @else if $gutter {
+  }
+
+  @else if $gutter {
     margin-left: $gutter;
     margin-right: $gutter;
-  } @else {
+  }
+
+  @else {
     margin-left: calc(#{$gl-gutter} * -1); // ie11 fallback
     margin-left: calc(var(--gutter) * -1);
     margin-right: calc(#{$gl-gutter} * -1); // ie11 fallback
@@ -70,7 +76,7 @@ $gl-gutter: 15px;
   margin-right: $gl-gutter; // ie11 fallback
   margin-right: $gutter;
 
-  @if (type-of($gutter) ==string) and ($gutter !=var(--gutter)) {
+  @if (type-of($gutter)==string) and ($gutter !=var(--gutter)) {
     @error "Unknown property `#{$gutter}`. The argument is positive gutter value and must be empty, 0 or >=0 in px,rem,em etc.";
   }
 }
@@ -80,29 +86,39 @@ $gl-gutter: 15px;
     width: auto;
     flex-basis: auto;
     flex-grow: 0;
-  } @else if $col==adaptive {
+  }
+
+  @else if $col==adaptive {
     width: 100%;
     flex-basis: 0;
     flex-grow: 1;
-  } @else if(type-of($col) ==number) and ($gutter != 0) {
+  }
+
+  @else if(type-of($col)==number) and ($gutter !=0) {
     width: calc(100% * #{$col} - #{$gl-gutter} * 2 - 0.1px); // ie11 fallback
     width: calc(100% * #{$col} - #{$gutter} * 2 - 0.1px); // 0.1px - is a fix for ie11 in some situations
     flex-basis: auto;
     flex-grow: 0;
-  } @else if(type-of($col) ==number) and ($gutter = 0) {
+  }
+
+  @else if(type-of($col)==number) and ($gutter=0) {
     width: calc(100% * #{$col});
     flex-basis: auto;
     flex-grow: 0;
-  } @else {
+  }
+
+  @else {
     @error "Argument value must be 'auto', 'adaptive' or column ratio (e.g. '2/12').";
   }
 }
 
 @mixin offset($col: false, $gutter: var(--gutter)) {
-  @if (type-of($col) ==number) and ($col >= 0) {
+  @if (type-of($col)==number) and ($col >=0) {
     margin-left: calc(100% * #{$col} + #{$gl-gutter}); // ie11 fallback
     margin-left: calc(100% * #{$col} + #{$gutter});
-  } @else {
+  }
+
+  @else {
     @error "Argument value must be a ratio (e.g. '2/12') or 0";
   }
 }

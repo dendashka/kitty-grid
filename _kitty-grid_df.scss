@@ -1,63 +1,52 @@
-// desktop first breakpoints
-$break_xlg : 1400px;
-$break_lg : 1200px;
-$break_md : 920px;
-$break_sm : 640px;
-$break_xs : 360px;
+$breakpoints: ( // breakpoints
+    xxlg: 1400px,
+    xlg: 1200px,
+    lg: 992px,
+    md: 640px,
+);
 
 // media queries mixins
-@mixin xlg {
-    @media screen and (max-width: $break_xlg) {
-        @content;
+@mixin breakpoint($screen-size) {
+    @if map-has-key($breakpoints, $screen-size) {
+        @media (min-width: map-get($breakpoints, $screen-size)) {
+            @content;
+        }
+    }
+
+    @else {
+        // Debugging
+        @error "#{$screen-size} has not been declared as a breakpoint."
     }
 }
 
-@mixin lg {
-    @media screen and (max-width: $break_lg) {
-        @content;
-    }
-}
+// global variables to fallback in ie11 and old browsers
+$gl-content-width: 1170px;
+$gl-mob-padding: 15px;
+$gl-gutter: 15px;
 
-@mixin md {
-    @media screen and (max-width: $break_md) {
-        @content;
-    }
-}
-
-@mixin sm {
-    @media screen and (max-width: $break_sm) {
-        @content;
-    }
-}
-
-@mixin xs {
-    @media screen and (max-width: $break_xs) {
-        @content;
-    }
-}
-
-// container, variables and fluid mobile gutters
-$mob-padding: 15px;
-
+// container, variables and fluid mobile gutters for mordern browsers
 :root {
     --content-width: 1170px;
+    --mob-padding: 15px;
     --gutter: 15px;
-}
 
-@include md {
-    :root {
-        --gutter: 10px;
+    @include breakpoint(lg) {
+        // --content-width: 1330px;
+    }
+
+    @include breakpoint(md) {
+        // --content-width: 1330px;
     }
 }
 
 // default layout mixins
-@mixin row($gutter:false) {
+@mixin row($gutter: false) {
     display: flex;
     flex-wrap: wrap;
     clear: both;
 
-    @if(type-of($gutter)==number) and ($gutter > 0) {
-        @error "Unknown property `#{$gutter}`. Argument is gutter value and must be default, 0 or less than 0";
+    @if (type-of($gutter)==number) and ($gutter > 0) {
+        @error "Unknown property `#{$gutter}`. The argument is a negative gutter value and must be empty, 0 or <0 in px,rem,em etc.";
     }
 
     @else if $gutter {
@@ -66,10 +55,11 @@ $mob-padding: 15px;
     }
 
     @else {
+        margin-left: calc(#{$gl-gutter} * -1); // ie11 fallback
         margin-left: calc(var(--gutter) * -1);
+        margin-right: calc(#{$gl-gutter} * -1); // ie11 fallback
         margin-right: calc(var(--gutter) * -1);
     }
-
 }
 
 @mixin no-gutter {
@@ -80,17 +70,17 @@ $mob-padding: 15px;
 @mixin col($gutter: var(--gutter)) {
     box-sizing: border-box;
     min-width: 0; // firefox fix Bug 1179454
+    margin-left: $gl-gutter; // ie11 fallback
     margin-left: $gutter;
+    margin-right: $gl-gutter; // ie11 fallback
     margin-right: $gutter;
 
-    @if(type-of($gutter)==string) and ($gutter !=var(--gutter)) {
-        @error "Unknown property `#{$gutter}`. Argument is gutter value and must be default, or in px,rem,em etc.";
+    @if (type-of($gutter)==string) and ($gutter !=var(--gutter)) {
+        @error "Unknown property `#{$gutter}`. The argument is positive gutter value and must be empty, 0 or >=0 in px,rem,em etc.";
     }
-
 }
 
 @mixin size($col, $gutter: var(--gutter)) {
-
     @if $col==auto {
         width: auto;
         flex-basis: auto;
@@ -103,41 +93,48 @@ $mob-padding: 15px;
         flex-grow: 1;
     }
 
-    @else if(type-of($col)==number) and ($gutter != 0) {
-        width: calc(100% * #{$col} - #{$gutter} * 2);
-        flex-basis: calc(100% * #{$col} - #{$gutter} * 2);
+    @else if(type-of($col)==number) and ($gutter !=0) {
+        width: calc(100% * #{$col} - #{$gl-gutter} * 2 - 0.1px); // ie11 fallback
+        width: calc(100% * #{$col} - #{$gutter} * 2 - 0.1px); // 0.1px - is a fix for ie11 in some situations
+        flex-basis: auto;
         flex-grow: 0;
     }
-    @else if(type-of($col)==number) and ($gutter = 0) {
+
+    @else if(type-of($col)==number) and ($gutter=0) {
         width: calc(100% * #{$col});
-        flex-basis: calc(100% * #{$col});
+        flex-basis: auto;
         flex-grow: 0;
     }
- 
+
     @else {
-        @error "Argument value must be auto or adaptive or part of column count(e. g. 2/12).";
+        @error "Argument value must be 'auto', 'adaptive' or column ratio (e.g. '2/12').";
     }
 }
 
-@mixin offset($col:false, $gutter: var(--gutter)) {
-
-    @if $col {
+@mixin offset($col: false, $gutter: var(--gutter)) {
+    @if (type-of($col)==number) and ($col >=0) {
+        margin-left: calc(100% * #{$col} + #{$gl-gutter}); // ie11 fallback
         margin-left: calc(100% * #{$col} + #{$gutter});
     }
 
     @else {
-        margin-left: $gutter;
+        @error "Argument value must be a ratio (e.g. '2/12') or 0";
     }
 }
 
 // main container
 .container {
-    max-width: calc(var(--content-width) + #{$mob-padding} * 2);
-    padding: 0 $mob-padding;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: calc(#{$gl-content-width} + #{$gl-mob-padding} * 2); // ie11 fallback
+    max-width: calc(var(--content-width) + var(--mob-padding) * 2);
+    padding: 0 var(--mob-padding);
     margin: 0 auto;
 }
 
 .container-fluid {
+    box-sizing: border-box;
+    width: 100%;
     max-width: 100%;
 }
 

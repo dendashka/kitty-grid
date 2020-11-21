@@ -1,13 +1,7 @@
 :root {
   --content-width: 1170px;
   --mob-padding: 15px;
-  --gutter: 10px;
-}
-
-@media (min-width: 992px) {
-  :root {
-    --gutter: 15px;
-  }
+  --gutter: 15px;
 }
 
 .container {
