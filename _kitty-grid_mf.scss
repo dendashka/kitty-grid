@@ -2,8 +2,8 @@ $breakpoints: ( // breakpoints
   sm: 576px,
   md: 768px,
   lg: 992px,
-  xlg: 1200px,
-  xxlg: 1400px,
+  xl: 1200px,
+  xxl: 1400px,
 );
 
 // media queries mixins
@@ -35,7 +35,7 @@ $gl-gutter: 15px;
     // --content-width: 1330px;
   }
 
-  @include breakpoint(xxlg) {
+  @include breakpoint(xxl) {
     // --content-width: 1330px;
   }
 }
@@ -129,6 +129,7 @@ $gl-gutter: 15px;
   width: 100%;
   max-width: calc(#{$gl-content-width} + #{$gl-mob-padding} * 2); // ie11 fallback
   max-width: calc(var(--content-width) + var(--mob-padding) * 2);
+  padding: 0 $gl-mob-padding;
   padding: 0 var(--mob-padding);
   margin: 0 auto;
 }
@@ -145,5 +146,31 @@ $gl-gutter: 15px;
 
   &_no-gutter {
     @include no-gutter();
+  }
+}
+
+// col adaptive
+.col {
+  @include col();
+  @include size(adaptive);
+}
+
+// cols auto
+@for $i from 1 through 12 {
+  .col-#{$i} {
+      @include col();
+      @include size($i/12);
+  }
+}
+
+// cols with media
+@each $breakpoint, $size in $breakpoints {
+  @for $i from 1 through 12 {
+    .col-#{$breakpoint}-#{$i} {
+      @include breakpoint($breakpoint) {
+        @include col();
+        @include size($i/12);
+      }
+    }
   }
 }
