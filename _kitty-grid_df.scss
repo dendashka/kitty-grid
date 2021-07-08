@@ -8,7 +8,7 @@ $breakpoints: ( // breakpoints
 // media queries mixins
 @mixin breakpoint($screen-size) {
     @if map-has-key($breakpoints, $screen-size) {
-        @media (min-width: map-get($breakpoints, $screen-size)) {
+        @media (max-width: map-get($breakpoints, $screen-size)) {
             @content;
         }
     }
@@ -100,7 +100,7 @@ $gl-gutter: 15px;
         flex-grow: 0;
     }
 
-    @else if(type-of($col)==number) and ($gutter=0) {
+    @else if(type-of($col)==number) and ($gutter==0) {
         width: calc(100% * #{$col});
         flex-basis: auto;
         flex-grow: 0;
