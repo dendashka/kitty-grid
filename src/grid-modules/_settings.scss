@@ -1,0 +1,39 @@
+/*
+* Main grid settings
+*/
+
+$grid-settings: (
+  breakpoints: (
+    // 0 breakpoint size is required first element value into breakpoints, other you may change as you want
+    // media query mixin for 0 breakpoint size just generete styles for selectors without css media query
+    // you may not use 'xs' size mixin in project, its used below to set some default values
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px,
+  ),
+  grid-variables: (
+    // you may set more 'key: value' for any breakpoint, required is key for '0' value
+    content-width:
+      (
+        xs: 1170px,
+        // xxl: 1200px, // example
+      ),
+    mob-padding: (
+      xs: 15px,
+      // xxl: 20px, // example
+    ),
+    gutter: (
+      xs: 15px,
+      // xxl: 20px, // example
+    ),
+  ),
+  columns: 12,
+  // set 'true' if you want to generate ie11 fallbacks
+  // it add partials support for only one screen size
+  enable-ie-support: "false",
+  // default is key for '0' value, but you may set any
+  ie-support-screen: "xs",
+);

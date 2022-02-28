@@ -1,0 +1,84 @@
+/*
+* Row mixin
+*/
+@mixin row() {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  // ie11 fallback
+  @if map-get($grid-settings, enable-ie-support) == "true" {
+    // prettier-ignore
+    margin-left: calc(#{map-get($grid-settings, grid-variables, gutter, map-get($grid-settings, ie-support-screen))} * -1);
+    // prettier-ignore
+    margin-right: calc(#{map-get($grid-settings, grid-variables, gutter, map-get($grid-settings, ie-support-screen))} * -1);
+  }
+  margin-left: calc(var(--gutter) * -1);
+  margin-right: calc(var(--gutter) * -1);
+}
+
+/*
+* Col mixin
+*/
+@mixin col() {
+  box-sizing: border-box;
+  min-width: 0; // fix firefox Bug 1179454 in some cases
+  @if map-get($grid-settings, enable-ie-support) == "true" {
+    // ie11 fallback
+    margin-left: #{map-get(
+        $grid-settings,
+        grid-variables,
+        gutter,
+        map-get($grid-settings, ie-support-screen)
+      )};
+    margin-right: #{map-get(
+        $grid-settings,
+        grid-variables,
+        gutter,
+        map-get($grid-settings, ie-support-screen)
+      )};
+  }
+  margin-left: var(--gutter);
+  margin-right: var(--gutter);
+}
+
+/*
+* Size mixin
+*/
+@mixin size($size) {
+  @if $size == auto {
+    flex: 0 0 auto;
+    width: auto;
+  } @else if $size == adaptive {
+    flex: 1 0 0;
+    width: 100%;
+  } @else if type-of($size) == number {
+    // ie11 fallback
+    // 0.1px is a fix in some cases
+    @if map-get($grid-settings, enable-ie-support) == "true" {
+      // prettier-ignore
+      width: calc(100% * #{$size} - #{map-get($grid-settings, grid-variables, gutter, map-get($grid-settings, ie-support-screen))} * 2 - 0.1px);
+    }
+    // prettier-ignore
+    width: calc(100% * #{$size} - var(--gutter) * 2);
+    flex: 0 0 auto;
+  } @else {
+    @error "Argument value must be 'auto', 'adaptive' or column ratio (e.g. '2/12').";
+  }
+}
+
+/*
+* Offset mixin
+*/
+@mixin offset($col) {
+  @if type-of($col) == number and $col >= 0 {
+    // ie11 fallback
+    @if map-get($grid-settings, enable-ie-support) == "true" {
+      // prettier-ignore
+      margin-left: calc(100% * #{$col} + #{map-get($grid-settings, grid-variables, gutter, map-get($grid-settings, ie-support-screen))});
+    }
+    // prettier-ignore
+    margin-left: calc(100% * #{$col} + var(--gutter));
+  } @else {
+    @error "Argument value must be a ratio (e.g. '2/12') or 0";
+  }
+}

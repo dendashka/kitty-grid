@@ -1,0 +1,13 @@
+/*
+* Most basic grid styles
+*/
+
+:root {
+  @each $key, $variables in map-get($grid-settings, grid-variables) {
+    @each $size, $value in map-get($grid-settings, grid-variables, $key) {
+      @include breakpoint($size) {
+        --#{$key}: #{$value};
+      }
+    }
+  }
+}

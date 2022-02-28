@@ -1,0 +1,21 @@
+@import '../src/kitty-grid';
+
+.element {
+    background: red;
+    margin-bottom: 6px;
+    padding: 25px;
+    font-size: 20px;
+}
+
+.new-row {
+    @include row();
+}
+
+.new-element {
+    @include col();
+    @include size(1/3);
+    background: green;
+    margin-bottom: 6px;
+    padding: 25px;
+    font-size: 20px;
+}

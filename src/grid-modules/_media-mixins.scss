@@ -1,0 +1,18 @@
+/*
+* Generate mixins for media query 
+*/
+@mixin breakpoint($screen-size) {
+  @if map-has-key($grid-settings, breakpoints, $screen-size) {
+    @if index(map-keys(map-get($grid-settings, breakpoints)), $screen-size) == 1
+    {
+      @content;
+    } @else {
+      @media (min-width: map-get($grid-settings, breakpoints, $screen-size)) {
+        @content;
+      }
+    }
+  } @else {
+    // Debugging
+    @error "`#{$screen-size}` has not been declared as a breakpoint.";
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "kitty-grid-sass",
+  "version": "1.0.0",
+  "description": "scss grid",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dendashka/kitty-grid-sass.git"
+  },
+  "keywords": [
+    "kitty",
+    "grid"
+  ],
+  "author": "denDashka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dendashka/kitty-grid-sass/issues"
+  },
+  "homepage": "https://github.com/dendashka/kitty-grid-sass#readme",
+  "devDependencies": {
+    "browser-sync": "^2.27.5",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-csso": "^4.0.1",
+    "gulp-sass": "^5.0.0",
+    "sass": "^1.43.2"
+  }
+}
