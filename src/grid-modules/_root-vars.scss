@@ -1,7 +1,6 @@
 /*
-* Most basic grid styles
+* Basic grid vars
 */
-
 :root {
   @each $key, $variables in map-get($grid-settings, grid-variables) {
     @each $size, $value in map-get($grid-settings, grid-variables, $key) {

@@ -1,8 +1,10 @@
-// You can set your own settings files for different pages 
-// to dinamicly change grid system for them
+// settings module
 @import "./grid-modules/settings";
 
+// modules to generate grid mixins
 @import "./grid-modules/media-mixins";
-@import "./grid-modules/root-styles";
 @import "./grid-modules/grid-mixins";
+@import "./grid-modules/root-vars";
+
+// module to generate grid classes
 @import "./grid-modules/grid-classes";

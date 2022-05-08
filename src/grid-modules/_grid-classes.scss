@@ -1,19 +1,10 @@
+@use "sass:math";
+
 /*
 * Container class
 */
 .container {
-  box-sizing: border-box;
-  width: 100%;
-  // ie11 fallback
-  @if map-get($grid-settings, enable-ie-support) == "true" {
-    // prettier-ignore
-    max-width: calc(#{map-get($grid-settings, grid-variables, content-width, map-get($grid-settings, ie-support-screen))} + #{map-get($grid-settings, grid-variables, mob-padding, map-get($grid-settings, ie-support-screen))} * 2);
-    padding: 0 #{map-get($grid-settings, grid-variables, mob-padding, map-get($grid-settings, ie-support-screen))};
-  }
-  // prettier-ignore
-  max-width: calc(var(--content-width) + var(--mob-padding) * 2);
-  margin: 0 auto;
-  padding: 0 var(--mob-padding);
+  @include container();
 }
 
 /*
@@ -39,12 +30,12 @@
       @if $i == 0 {
         .col {
           @extend %column-styles;
-          @include size(adaptive); // By default column size is adaptive
+          @include size(auto); // By default column size is auto
         }
       } @else {
         .col-#{$i} {
           @extend %column-styles;
-          @include size($i/12);
+          @include size(math.div($i, 12));
         }
       }
     }
@@ -52,7 +43,13 @@
     @for $i from 1 through map-get($grid-settings, columns) {
       .col-#{$breakpoint}-#{$i} {
         @include breakpoint($breakpoint) {
-          @include size($i/12);
+          @include size(math.div($i, 12));
+        }
+      }
+
+      .col-#{$breakpoint}-auto {
+        @include breakpoint($breakpoint) {
+          @include size(auto);
         }
       }
 
@@ -71,7 +68,7 @@
     @for $i from 1 through map-get($grid-settings, columns) {
       @if $i != map-get($grid-settings, columns) {
         .offset-#{$i} {
-          @include offset($i/12);
+          @include offset(math.div($i, 12));
         }
       }
     }
@@ -80,9 +77,14 @@
       @if $i != map-get($grid-settings, columns) {
         .offset-#{$breakpoint}-#{$i} {
           @include breakpoint($breakpoint) {
-            @include offset($i/12);
+            @include offset(math.div($i, 12));
           }
         }
+      }
+    }
+    .offset-#{$breakpoint}-0 {
+      @include breakpoint($breakpoint) {
+        @include offset(0);
       }
     }
   }

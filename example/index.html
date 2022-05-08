@@ -1,39 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
-        <div class="row">
-            <div class="element col-6 col-sm-3 col-lg-1 offset-3 offset-md-1"></div>
-            <div class="element col-6 col-sm-3 col-lg-1"></div>
-            <div class="element col-6 col-sm-3 col-lg-1"></div>
-            <div class="element col-6 col-sm-3 col-lg-1"></div>
-            <div class="element col-6 col-sm-3 col-lg-1"></div>
-            <div class="element col-6 col-sm-3 col-lg-1"></div>
-            <div class="element col-6 col-sm-3 col-lg-1"></div>
-            <div class="element col-6 col-sm-3 col-lg-1"></div>
-            <div class="element col-6 col-sm-3 col-lg-1"></div>
-            <div class="element col-6 col-sm-3 col-lg-1"></div>
-            <div class="element col-6 col-sm-3 col-lg-1"></div>
-            <div class="element col-6 col-sm-3 col-lg-1"></div>
-            <div class="element col-6 col-sm-3 col-lg-1"></div>
-            <div class="element col-6 col-sm-3 col-lg-1"></div>
-        </div>
-        <div class="new-row">
-            <div class="new-element"></div>
-            <div class="new-element"></div>
-            <div class="new-element"></div>
-            <div class="new-element"></div>
-            <div class="new-element"></div>
-            <div class="new-element"></div>
-            <div class="new-element"></div>
-        </div>
+        <h2>Mixins</h2>
+        <section class="mixins">
+            <div class="case-1">
+                <div class="mixin-row">
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                </div>
+            </div>
+            <div class="case-2">
+                <div class="mixin-row">
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                </div>
+            </div>
+            <div class="case-3">
+                <div class="mixin-row">
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                </div>
+            </div>
+            <div class="case-4">
+                <div class="mixin-row">
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                </div>
+            </div>
+            <div class="case-1 offset">
+                <div class="mixin-row">
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                </div>
+            </div>
+            <div class="case-2 offset">
+                <div class="mixin-row">
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                </div>
+            </div>
+        </section>
+        <h2>Classes</h2>
+        <section class="classes">
+            <div class="case-1">
+                <div class="row">
+                    <div class="element col-4"></div>
+                    <div class="element col-4"></div>
+                    <div class="element col-4"></div>
+                </div>
+            </div>
+            <div class="case-2">
+                <div class="row">
+                    <div class="element col-3"></div>
+                    <div class="element col-3"></div>
+                    <div class="element col-3"></div>
+                    <div class="element col-3"></div>
+                </div>
+            </div>
+            <div class="case-3">
+                <div class="row">
+                    <div class="element col-2"></div>
+                    <div class="element col-2"></div>
+                    <div class="element col-2"></div>
+                    <div class="element col-2"></div>
+                    <div class="element col-2"></div>
+                    <div class="element col-2"></div>
+                </div>
+            </div>
+            <div class="case-4">
+                <div class="row">
+                    <div class="element col-1"></div>
+                    <div class="element col-1"></div>
+                    <div class="element col-1"></div>
+                    <div class="element col-1"></div>
+                    <div class="element col-1"></div>
+                    <div class="element col-1"></div>
+                    <div class="element col-1"></div>
+                    <div class="element col-1"></div>
+                    <div class="element col-1"></div>
+                    <div class="element col-1"></div>
+                    <div class="element col-1"></div>
+                    <div class="element col-1"></div>
+                </div>
+            </div>
+            <div class="case-1 offset">
+                <div class="row">
+                    <div class="element col-4 offset-8"></div>
+                    <div class="element col-4 offset-4"></div>
+                    <div class="element col-4"></div>
+                    <div class="element col-4"></div>
+                    <div class="element col-4"></div>
+                    <div class="element col-4"></div>
+                </div>
+            </div>
+            <div class="case-2 offset">
+                <div class="row">
+                    <div class="element col-3 offset-9"></div>
+                    <div class="element col-3 offset-6"></div>
+                    <div class="element col-3"></div>
+                    <div class="element col-3 offset-3"></div>
+                    <div class="element col-3"></div>
+                    <div class="element col-3"></div>
+                    <div class="element col-3"></div>
+                    <div class="element col-3"></div>
+                    <div class="element col-3"></div>
+                    <div class="element col-3"></div>
+                </div>
+            </div>
+        </section>
+        <h2>Adaptive</h2>
+        <section class="adaptive">
+            <div class="case-1">
+                <div class="row">
+                    <div class="element col-12 col-md-6 col-lg-auto"></div>
+                    <div class="element col-12 col-md-6 col-lg-5"></div>
+                    <div class="element col-12 col-md-6 col-lg-auto"></div>
+                </div>
+            </div>
+            <div class="case-2">
+                <div class="row">
+                    <div class="element col-6 col-md-auto col-lg-auto"></div>
+                    <div class="element col-6 col-md-5 col-lg-7"></div>
+                    <div class="element col-6 col-md-auto col-lg-auto"></div>
+                </div>
+            </div>
+            <div class="case-3">
+                <div class="row">
+                    <div class="element col-12 col-md-3 col-lg-auto"></div>
+                    <div class="element col-12 col-md-4 col-lg-9"></div>
+                    <div class="element col-12 col-md-5 col-lg-auto"></div>
+                </div>
+            </div>
+            <div class="case-4">
+                <div class="row">
+                    <div class="element col-6 col-md-3 offset-md-6 offset-lg-9"></div>
+                    <div class="element col-6 col-md-3 offset-lg-6"></div>
+                    <div class="element col-6 col-md-3"></div>
+                    <div class="element col-6 col-md-3 offset-lg-3"></div>
+                    <div class="element col-6 col-md-3"></div>
+                    <div class="element col-6 col-md-3"></div>
+                    <div class="element col-6 col-md-3"></div>
+                    <div class="element col-6 col-md-3"></div>
+                    <div class="element col-6 col-md-3"></div>
+                    <div class="element col-6 col-md-3"></div>
+                </div>
+            </div>
+        </section>
     </div>
-    
+
 </body>
+
 </html>

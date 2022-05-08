@@ -1,17 +1,48 @@
+$ie-support: map-get($grid-settings, enable-ie-support) == "true";
+$ie-gutter: map-get(
+  $grid-settings,
+  grid-variables,
+  gutter,
+  map-get($grid-settings, ie-support-screen)
+);
+$ie-content-width: map-get(
+  $grid-settings,
+  grid-variables,
+  content-width,
+  map-get($grid-settings, ie-support-screen)
+);
+$ie-mob-padding: map-get(
+  $grid-settings,
+  grid-variables,
+  mob-padding,
+  map-get($grid-settings, ie-support-screen)
+);
+
+@mixin container() {
+  // ie11 fallback
+  @if $ie-support {
+    max-width: calc(#{$ie-content-width} + #{$ie-mob-padding} * 2);
+    padding: 0 #{$ie-mob-padding};
+  }
+  box-sizing: border-box;
+  width: 100%;
+  max-width: calc(var(--content-width) + var(--mob-padding) * 2);
+  margin: 0 auto;
+  padding: 0 var(--mob-padding);
+}
+
 /*
 * Row mixin
 */
 @mixin row() {
+  // ie11 fallback
+  @if $ie-support {
+    margin-left: calc(#{$ie-gutter} * -1);
+    margin-right: calc(#{$ie-gutter} * -1);
+  }
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
-  // ie11 fallback
-  @if map-get($grid-settings, enable-ie-support) == "true" {
-    // prettier-ignore
-    margin-left: calc(#{map-get($grid-settings, grid-variables, gutter, map-get($grid-settings, ie-support-screen))} * -1);
-    // prettier-ignore
-    margin-right: calc(#{map-get($grid-settings, grid-variables, gutter, map-get($grid-settings, ie-support-screen))} * -1);
-  }
   margin-left: calc(var(--gutter) * -1);
   margin-right: calc(var(--gutter) * -1);
 }
@@ -20,23 +51,13 @@
 * Col mixin
 */
 @mixin col() {
+  // ie11 fallback
+  @if $ie-support {
+    margin-left: #{$ie-gutter};
+    margin-right: #{$ie-gutter};
+  }
   box-sizing: border-box;
   min-width: 0; // fix firefox Bug 1179454 in some cases
-  @if map-get($grid-settings, enable-ie-support) == "true" {
-    // ie11 fallback
-    margin-left: #{map-get(
-        $grid-settings,
-        grid-variables,
-        gutter,
-        map-get($grid-settings, ie-support-screen)
-      )};
-    margin-right: #{map-get(
-        $grid-settings,
-        grid-variables,
-        gutter,
-        map-get($grid-settings, ie-support-screen)
-      )};
-  }
   margin-left: var(--gutter);
   margin-right: var(--gutter);
 }
@@ -45,20 +66,18 @@
 * Size mixin
 */
 @mixin size($size) {
-  @if $size == auto {
+  @if $size == content {
     flex: 0 0 auto;
     width: auto;
-  } @else if $size == adaptive {
+  } @else if $size == auto {
     flex: 1 0 0;
     width: 100%;
   } @else if type-of($size) == number {
     // ie11 fallback
     // 0.1px is a fix in some cases
-    @if map-get($grid-settings, enable-ie-support) == "true" {
-      // prettier-ignore
-      width: calc(100% * #{$size} - #{map-get($grid-settings, grid-variables, gutter, map-get($grid-settings, ie-support-screen))} * 2 - 0.1px);
+    @if $ie-support {
+      width: calc(100% * #{$size} - #{$ie-gutter} * 2 - 0.1px);
     }
-    // prettier-ignore
     width: calc(100% * #{$size} - var(--gutter) * 2);
     flex: 0 0 auto;
   } @else {
@@ -72,11 +91,9 @@
 @mixin offset($col) {
   @if type-of($col) == number and $col >= 0 {
     // ie11 fallback
-    @if map-get($grid-settings, enable-ie-support) == "true" {
-      // prettier-ignore
-      margin-left: calc(100% * #{$col} + #{map-get($grid-settings, grid-variables, gutter, map-get($grid-settings, ie-support-screen))});
+    @if $ie-support {
+      margin-left: calc(100% * #{$col} + #{$ie-gutter});
     }
-    // prettier-ignore
     margin-left: calc(100% * #{$col} + var(--gutter));
   } @else {
     @error "Argument value must be a ratio (e.g. '2/12') or 0";
